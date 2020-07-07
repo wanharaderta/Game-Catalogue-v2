@@ -51,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8351E54F24B4E36000719EDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83D4027824B328B000664C7B /* ContentView.swift */,
+				838026A224B36FEA007700C2 /* Home */,
+				8380269F24B36FBE007700C2 /* Search */,
+				83D4028D24B354AD00664C7B /* Menu */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8380269F24B36FBE007700C2 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,12 +99,12 @@
 		83D4027524B328B000664C7B /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				8351E54F24B4E36000719EDA /* Views */,
 				83D4028A24B32B9700664C7B /* ViewModels */,
 				83D4028924B32B5A00664C7B /* Resource */,
 				83D4028824B32B4C00664C7B /* App */,
 				83D4028724B32B3E00664C7B /* Services */,
 				83D4028624B32B3600664C7B /* Models */,
-				83D4028524B32B2E00664C7B /* Views */,
 				83D4027F24B328B200664C7B /* Info.plist */,
 				83D4027C24B328B200664C7B /* Preview Content */,
 			);
@@ -106,18 +117,6 @@
 				83D4027D24B328B200664C7B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		83D4028524B32B2E00664C7B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				83D4027824B328B000664C7B /* ContentView.swift */,
-				838026A224B36FEA007700C2 /* Home */,
-				8380269F24B36FBE007700C2 /* Search */,
-				83D4028D24B354AD00664C7B /* Menu */,
-			);
-			name = Views;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		83D4028624B32B3600664C7B /* Models */ = {

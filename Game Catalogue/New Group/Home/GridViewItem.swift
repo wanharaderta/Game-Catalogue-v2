@@ -34,12 +34,9 @@ struct GridViewItem: View {
                 URLImage(URL(string: item.background_image)!) { proxy in
                     proxy.image
                         .resizable()
-                        .renderingMode(.original)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 250)
-                        .clipped()
                         .cornerRadius(10)
                         .shadow(radius: 10)
+                        .frame(width: 250, height: 250)
                 }
                 VStack(alignment: .leading, spacing: 5) {
                     HStack {

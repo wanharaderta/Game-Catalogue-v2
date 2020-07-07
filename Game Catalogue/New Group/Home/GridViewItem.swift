@@ -36,7 +36,7 @@ struct GridViewItem: View {
                         .resizable()
                         .cornerRadius(10)
                         .shadow(radius: 10)
-                        .frame(width: 250, height: 250)
+                        .frame(width: 380, height: 250)
                 }
                 VStack(alignment: .leading, spacing: 5) {
                     HStack {

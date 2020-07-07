@@ -13,59 +13,40 @@ struct ContentView: View {
     
     var body: some View {
         
-//        VStack(spacing:0) {
-//
-//            ZStack {
-//                if self.index == 0 {
-//                    HomeView()
-//                } else if self.index == 1 {
-//                    SearchView()
-//                } else {
-//                   // ContentView()
-//                }
-//            }
-//
-//            NavigationMenuView(index: self.$index)
-//                .background(Color.white)
-//        }.background(Color.black.opacity(0.05).edgesIgnoringSafeArea(.top))
-        
-        TabView {
+        NavigationView {
             
-            HomeView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-                }.tag(1)
+            TabView {
+                
+                HomeView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "house")
+                            Text("Home")
+                        }
+                    }.tag(1)
+                
+                SearchView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "magnifyingglass")
+                            Text("Search")
+                        }
+                    }.tag(2)
+                
+                SearchView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "person")
+                            Text("Profile")
+                        }
+                    }.tag(3)
+            }
             
-            SearchView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "magnifyingglass")
-                        Text("Search")
-                    }
-                }.tag(2)
+            .navigationTitle("Game Catalogue")
             
-            SearchView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person")
-                        Text("Developer")
-                    }
-                }.tag(3)
-            
-            SearchView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "info.circle")
-                        Text("About")
-                    }
-                }.tag(3)
         }
     }
 }
-
 
 
 

@@ -6,16 +6,65 @@
 //
 
 import SwiftUI
+import URLImage
+
 
 struct HomeView: View {
+    
+    @ObservedObject private var viewModel = HomeViewModel()
+    @State private var columns = Array(repeating: GridItem(.flexible(),spacing: 15), count: 2)
+    
+    init(){
+        viewModel.load()
+    }
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("Popular in 2019")
-                .font(.custom("Arial", size: 30))
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-            
-            ScrollView(.horizontal,showsIndicators:false){
-                HStack() {
+        ZStack {
+            ScrollView(.vertical,showsIndicators:false){
+                
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    Text("Popular in 2019")
+                        .font(.title)
+                        .padding()
+                    
+                    
+                    ScrollView(.horizontal,showsIndicators:false){
+                        HStack(alignment:.top) {
+                            ForEach(self.viewModel.gamePopulars, id: \.id){ game in
+                                NavigationLink(destination: SearchView()){
+                                    GamePopularItem(item: game)
+                                        .padding(5)
+                                }
+                            }
+                        }.padding([.leading,.trailing],18)
+                    }
+                    
+                    HStack {
+                        Text("All Games")
+                            .font(.title)
+                            .padding([.bottom],10)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            if self.columns.count == 2 {
+                                self.columns.removeLast()
+                            } else {
+                                self.columns.append(GridItem(.flexible(),spacing: 15))
+                            }
+                        }, label: {
+                            Image(systemName: self.columns.count == 2 ? "rectangle.grid.1x2" : "square.grid.2x2")
+                                .font(.system(size: 24))
+                                .foregroundColor(.black)
+                        }).padding()
+                        
+                    }.padding([.horizontal,.top])
+                    
+                    LazyVGrid(columns: self.columns, spacing: 25) {
+                        ForEach(self.viewModel.games, id: \.id) { game in
+                            GridViewItem(item: game, columns: self.$columns)
+                        }
+                    }.padding([.horizontal,.top])
                     
                 }
             }
@@ -23,23 +72,6 @@ struct HomeView: View {
     }
 }
 
-struct GameCell:View {
-    
-    var body: some View {
-        VStack(alignment:.leading) {
-            
-            ZStack {
-                Image(systemName: "house")
-                    .resizable().frame(width: UIScreen.main.bounds.width - 30, height: 200)
-                
-                Text("test")
-                    .font(.system(size: 12, weight: .heavy))
-            }
-            
-        }
-    }
-    
-}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

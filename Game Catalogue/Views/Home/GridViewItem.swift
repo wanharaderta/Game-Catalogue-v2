@@ -13,47 +13,54 @@ struct GridViewItem: View {
     
     let item: Game
     @Binding var columns: [GridItem]
-        
-        
+    
+    
     var body: some View {
         VStack {
             
             if self.columns.count == 2 {
-                URLImage(URL(string: item.background_image)!) { proxy in
-                    proxy.image
-                        .resizable()
-                        .renderingMode(.original)
-                        .frame(height: 250)
-                        .cornerRadius(10)
+                
+                if (item.background_image != nil) {
+                    URLImage(URL(string: item.background_image!)!) { proxy in
+                        proxy.image
+                            .resizable()
+                            .renderingMode(.original)
+                            .frame(height: 180)
+                            .cornerRadius(10)
+                    }
                 }
                 
+                
                 Text(item.name)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .lineLimit(1)
+                    .foregroundColor(.primary)
+                    .font(.headline)
             } else {
-                URLImage(URL(string: item.background_image)!) { proxy in
-                    proxy.image
-                        .resizable()
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
-                        .frame(width: 380, height: 250)
+                if (item.background_image != nil) {
+                    URLImage(URL(string: item.background_image!)!) { proxy in
+                        proxy.image
+                            .resizable()
+                            .renderingMode(.original)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                            .frame(width: 350, height: 230)
+                    }
+
                 }
+
                 VStack(alignment: .leading, spacing: 5) {
                     HStack {
                         Text(item.name)
                             .foregroundColor(.primary)
                             .font(.headline)
-                        
+
                         Spacer()
                     }
-                    
+
                     Text(item.slug)
-                        .font(.headline)
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
-                        .frame(height: 30)
                 }.padding(.top, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             }
         }

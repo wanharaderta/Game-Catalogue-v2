@@ -13,37 +13,31 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationView {
+        TabView {
             
-            TabView {
-                
-                HomeView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "house")
-                            Text("Home")
-                        }
-                    }.tag(1)
-                
-                SearchView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "magnifyingglass")
-                            Text("Search")
-                        }
-                    }.tag(2)
-                
-                SearchView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "person")
-                            Text("Profile")
-                        }
-                    }.tag(3)
-            }
+            HomeView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "house")
+                        Text("Home")
+                    }
+                }.tag(1)
             
-            .navigationTitle("Game Catalogue")
+            SearchView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                    }
+                }.tag(2)
             
+            ProfileView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "person")
+                        Text("Profile")
+                    }
+                }.tag(3)
         }
     }
 }

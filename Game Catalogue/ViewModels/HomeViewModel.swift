@@ -10,8 +10,14 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     
+    private var service : WebService!
+    
     @Published var gamePopulars : [Game] = [Game]()
     @Published var games : [Game] = [Game]()
+    
+    init() {
+        self.service = WebService()
+    }
     
     func load() {
         fetchGamePopular()
@@ -19,7 +25,7 @@ class HomeViewModel: ObservableObject {
     }
     
     private func fetchGamePopular(){
-        WebService().getGamesPopular{ result in
+        self.service.getGamesPopular{ result in
             if let data = result as Results? {
                 DispatchQueue.main.async {
                     self.gamePopulars = data.games
@@ -29,7 +35,7 @@ class HomeViewModel: ObservableObject {
     }
     
     private func fetchAllGames(){
-        WebService().getAllGames{ result in
+        self.service.getAllGames{ result in
             if let data = result as Results? {
                 DispatchQueue.main.async {
                     self.games = data.games

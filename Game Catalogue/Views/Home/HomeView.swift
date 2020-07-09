@@ -19,59 +19,67 @@ struct HomeView: View {
     }
     
     var body: some View {
-        ZStack {
-            ScrollView(.vertical,showsIndicators:false){
+        NavigationView {
+            ZStack {
+                ScrollView(.vertical,showsIndicators:false){
+                    
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        Text("Popular in 2019")
+                            .font(.title)
+                            .padding()
+                        
+                        
+                        ScrollView(.horizontal,showsIndicators:false){
+                            HStack(alignment:.top) {
+                                ForEach(self.viewModel.gamePopulars, id: \.id){ game in
+                                    NavigationLink(destination: DetailView(item: game)){
+                                        GamePopularItem(item: game)
+                                            .padding(5)
+                                    }
+                                }
+                            }.padding([.leading,.trailing],18)
+                        }
+                        
+                        HStack {
+                            Text("All Games")
+                                .font(.title)
+                                .padding([.bottom],10)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                if self.columns.count == 2 {
+                                    self.columns.removeLast()
+                                } else {
+                                    self.columns.append(GridItem(.flexible(),spacing: 15))
+                                }
+                            }, label: {
+                                Image(systemName: self.columns.count == 2 ? "rectangle.grid.1x2" : "square.grid.2x2")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.black)
+                            }).padding()
+                            
+                        }.padding([.horizontal,.top])
+                        
+                        LazyVGrid(columns: self.columns, spacing: 25) {
+                            ForEach(self.viewModel.games, id: \.id) { game in
                 
-                LazyVStack(alignment: .leading, spacing: 0) {
-                    Text("Popular in 2019")
-                        .font(.title)
-                        .padding()
-                    
-                    
-                    ScrollView(.horizontal,showsIndicators:false){
-                        HStack(alignment:.top) {
-                            ForEach(self.viewModel.gamePopulars, id: \.id){ game in
-                                NavigationLink(destination: SearchView()){
-                                    GamePopularItem(item: game)
-                                        .padding(5)
+                                NavigationLink(destination: DetailView(item: game)){
+                                    GridViewItem(item: game, columns: self.$columns)
                                 }
                             }
-                        }.padding([.leading,.trailing],18)
+                        }.padding([.horizontal,.top])
+                        
                     }
-                    
-                    HStack {
-                        Text("All Games")
-                            .font(.title)
-                            .padding([.bottom],10)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            if self.columns.count == 2 {
-                                self.columns.removeLast()
-                            } else {
-                                self.columns.append(GridItem(.flexible(),spacing: 15))
-                            }
-                        }, label: {
-                            Image(systemName: self.columns.count == 2 ? "rectangle.grid.1x2" : "square.grid.2x2")
-                                .font(.system(size: 24))
-                                .foregroundColor(.black)
-                        }).padding()
-                        
-                    }.padding([.horizontal,.top])
-                    
-                    LazyVGrid(columns: self.columns, spacing: 25) {
-                        ForEach(self.viewModel.games, id: \.id) { game in
-                            GridViewItem(item: game, columns: self.$columns)
-                        }
-                    }.padding([.horizontal,.top])
-                    
                 }
             }
+            
+            .navigationTitle("Home")
         }
+        
     }
+    
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

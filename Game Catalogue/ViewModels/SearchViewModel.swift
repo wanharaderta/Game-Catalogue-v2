@@ -12,6 +12,7 @@ class SearchViewModel: ObservableObject {
     private var service : WebService!
     
     @Published var gameList : [Game] = [Game]()
+    @Published var emptyList = false
     
     var searchTemp: String = ""
     
@@ -32,6 +33,9 @@ class SearchViewModel: ObservableObject {
             if let data = result as Results? {
                 DispatchQueue.main.async {
                     self.gameList = data.games
+                    if self.gameList.count == 0 {
+                        self.emptyList = true
+                    }
                 }
             }
         }

@@ -11,7 +11,7 @@ import URLImage
 struct DetailView: View {
     
     @State var item : Game
-
+    
     var body: some View {
         
         List {
@@ -19,18 +19,19 @@ struct DetailView: View {
                 Rectangle()
                     .fill(Color.gray)
                 
-                if (item.background_image != nil) {
-                    URLImage(URL(string: item.background_image!)!) { proxy in
-                        proxy.image
-                            .resizable()
-                    }
+                URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in
+                    Text("Loading...")
+                }) { proxy in
+                    proxy.image
+                        .resizable()
                 }
+                
             }.aspectRatio(16/9, contentMode: .fit)
             
             HStack {
                 Text("Release : ")
                     .font(.headline)
-                Text(item.released ?? "")
+                Text(item.released)
                     .font(.subheadline)
             }.frame(alignment: .leading)
             
@@ -61,7 +62,7 @@ struct DetailView: View {
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-
+                
                 Spacer()
                 
                 VStack(alignment:.leading) {

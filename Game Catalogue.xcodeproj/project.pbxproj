@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		833D00D424BC7DAD00B048A2 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D00D324BC7DAD00B048A2 /* Indicator.swift */; };
 		834F7B4824B4540E0091AB21 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834F7B4724B4540E0091AB21 /* HomeViewModel.swift */; };
 		834F7B4B24B49D660091AB21 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 834F7B4A24B49D660091AB21 /* URLImage */; };
 		8351E54A24B4CD4F00719EDA /* GamePopularItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8351E54924B4CD4F00719EDA /* GamePopularItem.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		833D00D324BC7DAD00B048A2 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		834F7B4724B4540E0091AB21 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8351E54924B4CD4F00719EDA /* GamePopularItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePopularItem.swift; sourceTree = "<group>"; };
 		8351E54D24B4CEA100719EDA /* GridViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewItem.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				839FBBD424B5E94100041A40 /* Constants.swift */,
+				833D00D324BC7DAD00B048A2 /* Indicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				834F7B4824B4540E0091AB21 /* HomeViewModel.swift in Sources */,
 				83D279ED24B37FB000B2E42A /* Game.swift in Sources */,
 				8351E54E24B4CEA100719EDA /* GridViewItem.swift in Sources */,
+				833D00D424BC7DAD00B048A2 /* Indicator.swift in Sources */,
 				839FBBD224B5CFCD00041A40 /* SearchViewModel.swift in Sources */,
 				8376E3CB24B6D58700208AE1 /* ProfileView.swift in Sources */,
 				839FBBD524B5E94100041A40 /* Constants.swift in Sources */,

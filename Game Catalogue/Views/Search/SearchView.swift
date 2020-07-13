@@ -11,26 +11,42 @@ import SwiftUI
 struct SearchView: View {
     
     @ObservedObject private var viewModel = SearchViewModel()
-  
+    
     
     var body: some View {
         NavigationView {
+            
             List {
                 TextField("Search", text: self.$viewModel.searchTemp, onEditingChanged: {_ in } ){
                     self.viewModel.search()
                 }.textFieldStyle(RoundedBorderTextFieldStyle())
-
-                ForEach(self.viewModel.gameList, id: \.id){ game in
-                    NavigationLink(destination: DetailView(item: game)){
-                        SearchItem(item: game)
+                
+                if (self.viewModel.gameList.count == 0){
+                    
+                    VStack(alignment: .center) {
+                        if (self.viewModel.emptyList) {
+                            Image("no_result")
+                                .resizable()
+                                .frame(height: 350)
+                        } else {
+                            Image("search")
+                                .resizable()
+                                .frame(height: 380)
+                        }
+                    }.offset(y:100)
+                    
+                } else {
+                    ForEach(self.viewModel.gameList, id: \.id){ game in
+                        NavigationLink(destination: DetailView(item: game)){
+                            SearchItem(item: game)
+                        }
                     }
                 }
                 
             }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             
-            .navigationTitle("Search")
+            .navigationBarTitle("Search")
         }
-       
     }
 }
 

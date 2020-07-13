@@ -27,17 +27,23 @@ struct HomeView: View {
                         Text("Popular in 2019")
                             .font(.title)
                             .padding()
-                        
-                        
-                        ScrollView(.horizontal,showsIndicators:false){
-                            HStack(alignment:.top) {
-                                ForEach(self.viewModel.gamePopulars, id: \.id){ game in
-                                    NavigationLink(destination: DetailView(item: game)){
-                                        GamePopularItem(item: game)
-                                            .padding(5)
+                        if (self.viewModel.gamePopulars.count == 0) {
+                            HStack {
+                                Spacer()
+                                Indicator()
+                                Spacer()
+                            }
+                        } else {
+                            ScrollView(.horizontal,showsIndicators:false){
+                                HStack(alignment:.top) {
+                                    ForEach(self.viewModel.gamePopulars, id: \.id){ game in
+                                        NavigationLink(destination: DetailView(item: game)){
+                                            GamePopularItem(item: game)
+                                                .padding(5)
+                                        }
                                     }
-                                }
-                            }.padding([.leading,.trailing],18)
+                                }.padding([.leading,.trailing],18)
+                            }
                         }
                         
                         HStack {
@@ -61,14 +67,22 @@ struct HomeView: View {
                             
                         }.padding([.horizontal,.top])
                         
-                        LazyVGrid(columns: self.columns, spacing: 25) {
-                            ForEach(self.viewModel.games, id: \.id) { game in
-                
-                                NavigationLink(destination: DetailView(item: game)){
-                                    GridViewItem(item: game, columns: self.$columns)
-                                }
+                        if (self.viewModel.games.count == 0){
+                            HStack(alignment:.center) {
+                                Spacer()
+                                Indicator()
+                                Spacer()
                             }
-                        }.padding([.horizontal,.top])
+                        } else {
+                            LazyVGrid(columns: self.columns, spacing: 25) {
+                                ForEach(self.viewModel.games, id: \.id) { game in
+                                    
+                                    NavigationLink(destination: DetailView(item: game)){
+                                        GridViewItem(item: game, columns: self.$columns)
+                                    }
+                                }
+                            }.padding([.horizontal,.top])
+                        }
                         
                     }
                 }

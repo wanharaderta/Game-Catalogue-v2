@@ -16,18 +16,20 @@ struct GamePopularItem: View {
         
         VStack(alignment:.leading, spacing: 10) {
             
-            if (item.background_image != nil) {
-                URLImage(URL(string: item.background_image!)!) { proxy in
-                    proxy.image
-                        .resizable()
-                        .renderingMode(.original)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 300, height: 170)
-                        .clipped()
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
-                }
+            URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in
+                Indicator()
+                    .frame(width: 50, height: 50)
+            }) { proxy in
+                proxy.image
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 300, height: 170)
+                    .clipped()
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
             }
+            
             VStack(alignment: .leading, spacing: 5) {
                 Text(item.name)
                     .foregroundColor(.primary)

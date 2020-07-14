@@ -27,9 +27,11 @@ struct SearchItem: View {
                 VStack(alignment:.leading) {
                     Text(item.name)
                         .font(.headline)
-                    Text(item.released)
-                        .font(.subheadline)
-                        .foregroundColor(Color.gray).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    if (item.released != nil){
+                        Text(item.released ?? "")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    }
                     Text("Rank \(item.rating_top)")
                         .font(.subheadline)
                         .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)

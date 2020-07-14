@@ -31,8 +31,10 @@ struct DetailView: View {
             HStack {
                 Text("Release : ")
                     .font(.headline)
-                Text(item.released)
-                    .font(.subheadline)
+                if (item.released != nil){
+                    Text(item.released ?? "")
+                        .font(.subheadline)
+                }
             }.frame(alignment: .leading)
             
             HStack {
@@ -50,11 +52,10 @@ struct DetailView: View {
             }.frame(alignment: .leading)
             
             HStack(alignment:.top,spacing: 2) {
-                
                 VStack(alignment:.leading) {
-                    if item.genres.count > 0 {
+                    if item.genres != nil {
                         Text("Genres").font(.headline)
-                        ForEach(item.genres, id: \.id){ genre in
+                        ForEach(item.genres!, id: \.id){ genre in
                             Text(genre.name)
                                 .font(.subheadline)
                             
@@ -62,13 +63,11 @@ struct DetailView: View {
                     }
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                
                 Spacer()
-                
                 VStack(alignment:.leading) {
-                    if (item.tags.count > 0) {
+                    if (item.tags != nil) {
                         Text("Tags").font(.headline)
-                        ForEach(item.tags, id: \.id){ tag in
+                        ForEach(item.tags!, id: \.id){ tag in
                             Text(tag.name)
                                 .font(.subheadline)
                         }

@@ -17,9 +17,7 @@ struct GridViewItem: View {
     
     var body: some View {
         VStack {
-            
             if self.columns.count == 2 {
-                
                 URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in
                     Indicator()
                         .frame(width: 50, height: 50)
@@ -30,22 +28,19 @@ struct GridViewItem: View {
                         .frame(height: 180)
                         .cornerRadius(10)
                 }
-                
                 Text(item.name)
                     .foregroundColor(.primary)
                     .font(.headline)
                     .lineLimit(1)
-                
-                Text(item.released)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                
+                if (item.released != nil){
+                    Text(item.released ?? "")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                }
                 Text("Rank \(item.rating_top)")
                     .font(.subheadline)
                     .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                
             } else {
-                
                 URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in
                     Indicator()
                         .frame(width: 50, height: 50)
@@ -57,7 +52,6 @@ struct GridViewItem: View {
                         .shadow(radius: 10)
                         .frame(width: UIScreen.main.bounds.width - 30, height: 220)
                 }
-                
                 VStack(alignment: .leading, spacing: 3) {
                     HStack {
                         Text(item.name)
@@ -66,11 +60,11 @@ struct GridViewItem: View {
                         
                         Spacer()
                     }
-                    
-                    Text(item.released)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                    
+                    if (item.released != nil){
+                        Text(item.released ?? "")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    }
                     Text("Rank \(item.rating_top)")
                         .font(.subheadline)
                         .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)

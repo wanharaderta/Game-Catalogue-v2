@@ -24,10 +24,10 @@ struct Game: Codable {
     let slug: String
     let rating: Double?
     let background_image: String?
-    let released: String
+    let released: String?
     let rating_top: Int
-    let genres:[Genres]
-    let tags:[Tags]
+    let genres:[Genres]?
+    let tags:[Tags]?
     
     enum CodingKeys: String, CodingKey {
         case id

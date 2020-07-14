@@ -11,7 +11,7 @@ class WebService {
     
     let BASE_URL : String = "https://api.rawg.io/api/"
     
-    func getGamesPopular(completion : @escaping ((Results) -> Void)) {
+    func getGamesPopular(completion : @escaping ((Results?) -> Void)) {
         guard let url   = URL(string: "\(BASE_URL)games?dates=2019-01-01,2019-01-01&ordering=-added&page_size=5") else {
             fatalError("URL is not correct")
         }
@@ -21,7 +21,7 @@ class WebService {
             
             if response.statusCode == 200 {
                 let decoder = JSONDecoder()
-                let result = try! decoder.decode(Results.self, from: data)
+                let result = try? decoder.decode(Results.self, from: data)
                 DispatchQueue.main.async {
                     completion(result)
                 }
@@ -32,7 +32,7 @@ class WebService {
         
     }
     
-    func getAllGames(completion : @escaping ((Results) -> Void)) {
+    func getAllGames(completion : @escaping ((Results?) -> Void)) {
         guard let url   = URL(string: "\(BASE_URL)games?page_size=20") else {
             fatalError("URL is not correct")
         }
@@ -42,7 +42,7 @@ class WebService {
             
             if response.statusCode == 200 {
                 let decoder = JSONDecoder()
-                let result = try! decoder.decode(Results.self, from: data)
+                let result = try? decoder.decode(Results.self, from: data)
                 DispatchQueue.main.async {
                     completion(result)
                 }

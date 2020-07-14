@@ -53,7 +53,7 @@ class WebService {
         
     }
     
-    func searchGames(searchItem: String,completion : @escaping ((Results) -> Void)) {
+    func searchGames(searchItem: String,completion : @escaping ((Results?) -> Void)) {
         guard let url   = URL(string: "\(BASE_URL)games?search=\(searchItem)") else {
             fatalError("URL is not correct")
         }
@@ -63,7 +63,7 @@ class WebService {
             
             if response.statusCode == 200 {
                 let decoder = JSONDecoder()
-                let result = try! decoder.decode(Results.self, from: data)
+                let result = try? decoder.decode(Results.self, from: data)
                 DispatchQueue.main.async {
                     completion(result)
                 }

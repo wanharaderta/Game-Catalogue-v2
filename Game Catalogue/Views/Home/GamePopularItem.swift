@@ -13,7 +13,6 @@ struct GamePopularItem: View {
     let item: Game
     
     var body: some View {
-        
         VStack(alignment:.leading, spacing: 10) {
             
             URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in

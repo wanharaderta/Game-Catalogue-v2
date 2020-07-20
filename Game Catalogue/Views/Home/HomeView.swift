@@ -76,7 +76,6 @@ struct HomeView: View {
                         } else {
                             LazyVGrid(columns: self.columns, spacing: 25) {
                                 ForEach(self.viewModel.games, id: \.id) { game in
-                                    
                                     NavigationLink(destination: DetailView(item: game)){
                                         GridViewItem(item: game, columns: self.$columns)
                                     }

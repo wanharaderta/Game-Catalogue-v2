@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8318263124C7300000331DAE /* Game_catalogue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8318262F24C7300000331DAE /* Game_catalogue.xcdatamodeld */; };
+		8318263324C7320B00331DAE /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318263224C7320B00331DAE /* DetailViewModel.swift */; };
 		831F3F0B24C5DEAB00E169AA /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F3F0A24C5DEAB00E169AA /* CustomShape.swift */; };
 		831F3F0E24C5EA0A00E169AA /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F3F0D24C5EA0A00E169AA /* GameMenu.swift */; };
 		831F3F1024C5F5DA00E169AA /* PictureGameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831F3F0F24C5F5DA00E169AA /* PictureGameItem.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8318263024C7300000331DAE /* Game_catalogue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Game_catalogue.xcdatamodel; sourceTree = "<group>"; };
+		8318263224C7320B00331DAE /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		831F3F0A24C5DEAB00E169AA /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		831F3F0D24C5EA0A00E169AA /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 		831F3F0F24C5F5DA00E169AA /* PictureGameItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureGameItem.swift; sourceTree = "<group>"; };
@@ -69,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8318262E24C72FEF00331DAE /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				8318262F24C7300000331DAE /* Game_catalogue.xcdatamodeld */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 		831F3F0C24C5E9E500E169AA /* local */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +175,7 @@
 		83D4027524B328B000664C7B /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
+				8318262E24C72FEF00331DAE /* DB */,
 				839FBBD324B5E93400041A40 /* Utils */,
 				8351E54F24B4E36000719EDA /* Views */,
 				83D4028A24B32B9700664C7B /* ViewModels */,
@@ -222,6 +235,7 @@
 			children = (
 				834F7B4724B4540E0091AB21 /* HomeViewModel.swift */,
 				839FBBD124B5CFCD00041A40 /* SearchViewModel.swift */,
+				8318263224C7320B00331DAE /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -310,12 +324,14 @@
 				834F7B4824B4540E0091AB21 /* HomeViewModel.swift in Sources */,
 				831F3F1024C5F5DA00E169AA /* PictureGameItem.swift in Sources */,
 				83D279ED24B37FB000B2E42A /* Game.swift in Sources */,
+				8318263124C7300000331DAE /* Game_catalogue.xcdatamodeld in Sources */,
 				8351E54E24B4CEA100719EDA /* GridViewItem.swift in Sources */,
 				833D00D424BC7DAD00B048A2 /* Indicator.swift in Sources */,
 				839FBBD224B5CFCD00041A40 /* SearchViewModel.swift in Sources */,
 				8376E3CB24B6D58700208AE1 /* ProfileView.swift in Sources */,
 				839FBBD524B5E94100041A40 /* Constants.swift in Sources */,
 				83D279E924B3780400B2E42A /* HomeView.swift in Sources */,
+				8318263324C7320B00331DAE /* DetailViewModel.swift in Sources */,
 				8351E54A24B4CD4F00719EDA /* GamePopularItem.swift in Sources */,
 				839FBBD024B5CF3700041A40 /* SearchBar.swift in Sources */,
 				839FBBD724B5FF3E00041A40 /* SearchItem.swift in Sources */,
@@ -527,6 +543,19 @@
 			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		8318262F24C7300000331DAE /* Game_catalogue.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8318263024C7300000331DAE /* Game_catalogue.xcdatamodel */,
+			);
+			currentVersion = 8318263024C7300000331DAE /* Game_catalogue.xcdatamodel */;
+			path = Game_catalogue.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 83D4026B24B328B000664C7B /* Project object */;
 }

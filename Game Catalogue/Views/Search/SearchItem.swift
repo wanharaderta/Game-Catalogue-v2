@@ -16,7 +16,7 @@ struct SearchItem: View {
         VStack {
             HStack {
                 
-                URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in
+                URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
                     Indicator()
                         .frame(width: 50, height: 50)
                 }) { proxy in

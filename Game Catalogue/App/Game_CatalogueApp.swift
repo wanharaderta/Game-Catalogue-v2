@@ -11,11 +11,12 @@ import CoreData
 @main
 struct Game_CatalogueApp: App {
     
+    @StateObject private var persistentStore = PersistentStore.shared
     @Environment(\.scenePhase) private var scenePhase
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environment(\.managedObjectContext, persistentStore.context)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {
@@ -25,32 +26,14 @@ struct Game_CatalogueApp: App {
                 print("inactive")
             case .background:
                 print("background")
-                saveContext()
+                savePersistentStore()
             @unknown default:
                 fatalError("\(#function), fatal error in switch statement for .onChange modifier")
             }
         }
     }
     
-    var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Games")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
+    func savePersistentStore() {
+        persistentStore.saveContext()
     }
 }

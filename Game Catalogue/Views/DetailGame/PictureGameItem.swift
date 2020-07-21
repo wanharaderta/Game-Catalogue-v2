@@ -25,7 +25,8 @@ struct PictureGameItem: View {
                     .frame(width: 300, height: 170)
                     .clipped()
                     .cornerRadius(10)
-                    .shadow(radius: 10)
+                   
+            
             }
         }
     }
@@ -33,6 +34,6 @@ struct PictureGameItem: View {
 
 struct PictureGameItem_Previews: PreviewProvider {
     static var previews: some View {
-        PictureGameItem(imageURL: NO_IMAGE)
+        PictureGameItem(imageURL: IMAGE_DEFAULT)
     }
 }

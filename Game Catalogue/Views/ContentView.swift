@@ -22,7 +22,6 @@ struct ContentView: View {
                         Text("Home")
                     }
                 }.tag(1)
-            
             SearchView()
                 .tabItem {
                     VStack {
@@ -30,7 +29,13 @@ struct ContentView: View {
                         Text("Search")
                     }
                 }.tag(2)
-            
+            FavoriteView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "suit.heart.fill")
+                        Text("Favorite")
+                    }
+                }.tag(3)
             ProfileView()
                 .tabItem {
                     VStack {

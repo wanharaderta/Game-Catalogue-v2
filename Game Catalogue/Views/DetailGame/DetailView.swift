@@ -10,9 +10,11 @@ import URLImage
 
 struct DetailView: View {
     
-    let menus = GameMenu.all()
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @ObservedObject var viewModel = DetailViewModel()
+    
+    
     @State var item : Game
     @State private var selection = 0
     
@@ -85,8 +87,10 @@ struct DetailView: View {
         VStack {
             
             ZStack(alignment: .top){
-                URLImage((URL(string: item.background_image ?? NO_IMAGE)!), placeholder: { _ in
-                    Text("Loading...")
+                URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
+                    Image(IMAGE_DEFAULT)
+                        .resizable()
+                        .frame(height: 320)
                 }) { proxy in
                     proxy.image
                         .resizable()
@@ -105,15 +109,31 @@ struct DetailView: View {
                     
                     Spacer()
                     
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/){
-                        Image(systemName: "heart")
-                            .foregroundColor(.red)
-                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 12)
-                            .background(Color.white)
-                        
-                    }.clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                    .padding(.top, 40)
-                    .padding(.trailing, 15)
+                    if self.viewModel.isFavorite {
+                        Button(action: {
+                
+                        }){
+                            Image(systemName: "suit.heart.fill")
+                                .foregroundColor(.red)
+                                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 12)
+                                .background(Color.white)
+                            
+                        }.clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .padding(.top, 40)
+                        .padding(.trailing, 15)
+                    } else {
+                        Button(action: {
+                            self.viewModel.saveTodo(id: item.id, name: item.name, image: item.background_image ?? "", ranking: item.rating_top, rating: item.rating ?? 0.0)
+                        }){
+                            Image(systemName: "suit.heart")
+                                .foregroundColor(.red)
+                                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 12)
+                                .background(Color.white)
+                            
+                        }.clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .padding(.top, 40)
+                        .padding(.trailing, 15)
+                    }
                 }
             }.clipShape(CustomShape(corner: .bottomLeft, radii: 35))
             

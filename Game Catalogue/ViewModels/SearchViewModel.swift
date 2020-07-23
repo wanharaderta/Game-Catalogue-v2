@@ -16,7 +16,6 @@ class SearchViewModel: ObservableObject {
     
     var searchTemp: String = ""
     
-    
     init() {
         self.service = WebService()
     }
@@ -26,7 +25,6 @@ class SearchViewModel: ObservableObject {
             searchGames(item: item)
         }
     }
-    
     
     private func searchGames(item:String){
         self.service.searchGames(searchItem: item) { result in

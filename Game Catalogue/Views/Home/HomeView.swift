@@ -37,7 +37,7 @@ struct HomeView: View {
                             ScrollView(.horizontal,showsIndicators:false){
                                 HStack(alignment:.top) {
                                     ForEach(self.viewModel.gamePopulars, id: \.id){ game in
-                                        NavigationLink(destination: DetailView(item: game)){
+                                        NavigationLink(destination: DetailView(id: game.id)){
                                             GamePopularItem(item: game)
                                                 .padding(5)
                                         }
@@ -76,7 +76,7 @@ struct HomeView: View {
                         } else {
                             LazyVGrid(columns: self.columns, spacing: 25) {
                                 ForEach(self.viewModel.games, id: \.id) { game in
-                                    NavigationLink(destination: DetailView(item: game)){
+                                    NavigationLink(destination: DetailView(id: game.id)){
                                         GridViewItem(item: game, columns: self.$columns)
                                     }
                                 }

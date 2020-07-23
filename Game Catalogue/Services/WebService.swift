@@ -73,5 +73,25 @@ class WebService {
         }.resume()
         
     }
+    
+    func getDetailGame(id:Int, completion: @escaping ((GameDetailResponse?) -> Void)) {
+        guard let url   = URL(string: "\(BASE_URL)games/\(id)") else {
+            fatalError("URL is not correct")
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let response = response as? HTTPURLResponse, let data = data else { return }
+            
+            if response.statusCode == 200 {
+                let decoder = JSONDecoder()
+                let result = try? decoder.decode(GameDetailResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            } else {
+                print("ERROR: \(data), HTTP Status: \(response.statusCode)")
+            }
+        }.resume()
+    }
 }
 

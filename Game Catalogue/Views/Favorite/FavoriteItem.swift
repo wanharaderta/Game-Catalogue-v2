@@ -1,16 +1,16 @@
 //
-//  SearchItem.swift
+//  FavoriteItem.swift
 //  Game Catalogue
 //
-//  Created by Wanhar on 08/07/20.
+//  Created by Wanhar on 22/07/20.
 //
 
 import SwiftUI
 import URLImage
 
-struct SearchItem: View {
+struct FavoriteItem: View {
     
-    let item: Game
+    let item : GameFavorite
     
     var body: some View {
         VStack {
@@ -27,14 +27,14 @@ struct SearchItem: View {
                         .frame(width: 100, height: 90)
                 }
                 VStack(alignment:.leading) {
-                    Text(item.name)
+                    Text(item.name ?? "")
                         .font(.headline)
                     if (item.released != nil){
                         Text(item.released ?? "")
                             .font(.subheadline)
                             .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                     }
-                    Text("Rank \(item.rating_top)")
+                    Text("Rank \(item.ranking ?? 0)")
                         .font(.subheadline)
                         .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                 }

@@ -37,7 +37,7 @@ struct SearchView: View {
                     
                 } else {
                     ForEach(self.viewModel.gameList, id: \.id){ game in
-                        NavigationLink(destination: DetailView(item: game)){
+                        NavigationLink(destination: DetailView(id: game.id)){
                             SearchItem(item: game)
                         }
                     }

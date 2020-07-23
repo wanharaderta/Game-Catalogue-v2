@@ -8,10 +8,11 @@
 import Foundation
 
 
-struct GameFavorite: Codable {
-    var id = UUID()
-    var name: String
-    var background_image: String
-    var ranking: Int
-    var rating: Double
+struct GameFavorite{
+    var id : Int?
+    var name: String?
+    var background_image: String?
+    var ranking: Int?
+    var rating: Double?
+    var released: String?
 }

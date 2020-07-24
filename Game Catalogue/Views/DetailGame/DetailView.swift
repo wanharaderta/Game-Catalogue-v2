@@ -15,7 +15,7 @@ struct DetailView: View {
     @ObservedObject var viewModel = DetailViewModel()
     
     let id : Int
-
+    
     init(id: Int) {
         self.id = id
         self.viewModel.getDetail(id: id)
@@ -49,7 +49,7 @@ struct DetailView: View {
                     
                     if self.viewModel.isFavorite {
                         Button(action: {
-                            
+                            self.viewModel.getDetail(id: self.viewModel.gameDetail.id)
                         }){
                             Image(systemName: "suit.heart.fill")
                                 .foregroundColor(.red)

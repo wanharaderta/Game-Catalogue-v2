@@ -15,7 +15,6 @@ struct FavoriteItem: View {
     var body: some View {
         VStack {
             HStack {
-                
                 URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
                     Indicator()
                         .frame(width: 50, height: 50)
@@ -39,7 +38,6 @@ struct FavoriteItem: View {
                         .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                 }
             }
-            
         }
     }
 }

@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct FavoriteView: View {
     
     @ObservedObject private var viewModel = FavoriteViewModel()
+    @State private var isShowing = false
     
     init() {
         self.viewModel.getAllFavorites()
@@ -23,8 +25,9 @@ struct FavoriteView: View {
     }
     
     var body: some View {
+        
         NavigationView {
-            List{
+            List {
                 ForEach(self.viewModel.gameFavorites, id: \.id){ game in
                     if game.id != nil {
                         NavigationLink(destination: DetailView(id: game.id!)){
@@ -32,11 +35,17 @@ struct FavoriteView: View {
                         }
                     }
                 }.onDelete(perform: delete)
+            }.pullToRefresh(isShowing: $isShowing) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.viewModel.getAllFavorites()
+                    self.isShowing = false
+                }
             }
             .navigationTitle("Favorite")
         }
     }
 }
+
 
 struct FavoriteView_Previews: PreviewProvider {
     static var previews: some View {

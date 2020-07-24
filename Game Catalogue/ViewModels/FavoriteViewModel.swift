@@ -36,7 +36,6 @@ class FavoriteViewModel: ObservableObject {
     }
     
     func fetchGame(id:Int) -> Games? {
-        //var game: GameFavorite = GameFavorite()
         var results    = [Games]()
         
         let request: NSFetchRequest<Games>    = Games.fetchRequest()
@@ -63,6 +62,4 @@ class FavoriteViewModel: ObservableObject {
         }
     }
     
-    
-
 }

@@ -32,14 +32,6 @@ struct GridViewItem: View {
                     .foregroundColor(.primary)
                     .font(.headline)
                     .lineLimit(1)
-                if (item.released != nil){
-                    Text(item.released ?? "")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                }
-                Text("Rank \(item.rating_top)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
             } else {
                 URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
                     Indicator()
@@ -68,7 +60,6 @@ struct GridViewItem: View {
                     Text("Rank \(item.rating_top)")
                         .font(.subheadline)
                         .foregroundColor(.secondary).opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-                    
                 }.padding(.top, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 .frame(width: UIScreen.main.bounds.width - 30)
             }

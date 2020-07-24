@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		83090AE524C88881004BFBC4 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83090AE424C88881004BFBC4 /* FavoriteViewModel.swift */; };
 		83090AEA24C892BD004BFBC4 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83090AE924C892BD004BFBC4 /* GameDetail.swift */; };
+		8312CF2A24CB2B3900D39EF2 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8312CF2924CB2B3900D39EF2 /* CustomScrollView.swift */; };
+		8312CF2D24CB305700D39EF2 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 8312CF2C24CB305700D39EF2 /* SwiftUIRefresh */; };
 		8318263124C7300000331DAE /* Game_catalogue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8318262F24C7300000331DAE /* Game_catalogue.xcdatamodeld */; };
 		8318263324C7320B00331DAE /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318263224C7320B00331DAE /* DetailViewModel.swift */; };
 		8318263C24C73CDD00331DAE /* PersistentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8318263B24C73CDD00331DAE /* PersistentStore.swift */; };
@@ -41,6 +43,7 @@
 /* Begin PBXFileReference section */
 		83090AE424C88881004BFBC4 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		83090AE924C892BD004BFBC4 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
+		8312CF2924CB2B3900D39EF2 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		8318263024C7300000331DAE /* Game_catalogue.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Game_catalogue.xcdatamodel; sourceTree = "<group>"; };
 		8318263224C7320B00331DAE /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		8318263B24C73CDD00331DAE /* PersistentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStore.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8312CF2D24CB305700D39EF2 /* SwiftUIRefresh in Frameworks */,
 				834F7B4B24B49D660091AB21 /* URLImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +185,7 @@
 				839FBBD424B5E94100041A40 /* Constants.swift */,
 				833D00D324BC7DAD00B048A2 /* Indicator.swift */,
 				831F3F0A24C5DEAB00E169AA /* CustomShape.swift */,
+				8312CF2924CB2B3900D39EF2 /* CustomScrollView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 			name = "Game Catalogue";
 			packageProductDependencies = (
 				834F7B4A24B49D660091AB21 /* URLImage */,
+				8312CF2C24CB305700D39EF2 /* SwiftUIRefresh */,
 			);
 			productName = "Game Catalogue";
 			productReference = 83D4027324B328B000664C7B /* Game Catalogue.app */;
@@ -319,6 +325,7 @@
 			mainGroup = 83D4026A24B328B000664C7B;
 			packageReferences = (
 				834F7B4924B49D660091AB21 /* XCRemoteSwiftPackageReference "url-image" */,
+				8312CF2B24CB305700D39EF2 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = 83D4027424B328B000664C7B /* Products */;
 			projectDirPath = "";
@@ -351,6 +358,7 @@
 				831F3F0B24C5DEAB00E169AA /* CustomShape.swift in Sources */,
 				83D4027924B328B000664C7B /* ContentView.swift in Sources */,
 				83D279EB24B37B9900B2E42A /* WebService.swift in Sources */,
+				8312CF2A24CB2B3900D39EF2 /* CustomScrollView.swift in Sources */,
 				834F7B4824B4540E0091AB21 /* HomeViewModel.swift in Sources */,
 				83090AE524C88881004BFBC4 /* FavoriteViewModel.swift in Sources */,
 				831F3F1024C5F5DA00E169AA /* PictureGameItem.swift in Sources */,
@@ -562,6 +570,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8312CF2B24CB305700D39EF2 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUIRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
 		834F7B4924B49D660091AB21 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -573,6 +589,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8312CF2C24CB305700D39EF2 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8312CF2B24CB305700D39EF2 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
 		834F7B4A24B49D660091AB21 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 834F7B4924B49D660091AB21 /* XCRemoteSwiftPackageReference "url-image" */;

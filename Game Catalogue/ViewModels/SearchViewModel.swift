@@ -18,6 +18,7 @@ class SearchViewModel: ObservableObject {
     
     init() {
         self.service = WebService()
+        search()
     }
     
     func search() {

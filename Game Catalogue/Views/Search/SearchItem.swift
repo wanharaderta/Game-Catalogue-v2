@@ -17,8 +17,11 @@ struct SearchItem: View {
             HStack {
                 
                 URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
-                    Indicator()
-                        .frame(width: 50, height: 50)
+                    ZStack {
+                        Indicator()
+                    }.frame(width: 100, height: 90)
+                    .cornerRadius(10)
+                    .clipped()
                 }) { proxy in
                     proxy.image
                         .resizable()

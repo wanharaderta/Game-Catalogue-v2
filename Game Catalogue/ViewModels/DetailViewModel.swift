@@ -32,6 +32,7 @@ class DetailViewModel: ObservableObject {
         
         do {
             try self.store.save()
+            isFavorite = true
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -63,21 +64,31 @@ class DetailViewModel: ObservableObject {
         }
     }
     
-    /*
-     func someEntityExists(id: Int) -> Bool {
-     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SomeEntity")
-     fetchRequest.includesSubentities = false
-     
-     var entitiesCount = 0
-     
-     do {
-     entitiesCount = try managedObjectContext.count(for: fetchRequest)
-     }
-     catch {
-     print("error executing fetch request: \(error)")
-     }
-     
-     return entitiesCount > 0
-     }
-     */
+    func fetchGame(id:Int) -> Games? {
+        var results    = [Games]()
+        
+        let request: NSFetchRequest<Games>    = Games.fetchRequest()
+        request.predicate    = NSPredicate(format: "id == \(id)")
+        
+        do {
+            results = try self.store.fetch(request)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        return results.first
+    }
+    
+    func deleteGame(id:Int){
+        do {
+            if let game = fetchGame(id: id){
+                self.store.delete(game)
+                try self.store.save()
+                isFavorite = false
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
 }

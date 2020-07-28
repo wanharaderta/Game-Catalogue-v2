@@ -49,7 +49,7 @@ struct DetailView: View {
                     
                     if self.viewModel.isFavorite {
                         Button(action: {
-                            self.viewModel.getDetail(id: self.viewModel.gameDetail.id)
+                            self.viewModel.deleteGame(id: self.viewModel.gameDetail.id)
                         }){
                             Image(systemName: "suit.heart.fill")
                                 .foregroundColor(.red)

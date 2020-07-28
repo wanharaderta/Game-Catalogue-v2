@@ -23,10 +23,10 @@ class DetailViewModel: ObservableObject {
     
     func saveGame(id: Int, name: String, image: String, ranking: Int, rating: Double, released: String){
         let fv      = Games(context: store)
-        fv.id       = Int16(id)
+        fv.id       = Int64(id)
         fv.name     = name
         fv.rating   = rating
-        fv.ranking  = Int16(ranking)
+        fv.ranking  = Int64(ranking)
         fv.background_image = image
         fv.released = released
         

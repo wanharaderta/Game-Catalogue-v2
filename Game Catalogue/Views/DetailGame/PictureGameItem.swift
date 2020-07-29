@@ -10,11 +10,19 @@ import URLImage
 
 struct PictureGameItem: View {
     
-    let imageURL:String
+    let imageURL:String?
+    
+    func image() -> URL {
+        if let url  = imageURL {
+            return URL(string: url) ?? URL(string: IMAGE_DEFAULT)!
+        } else {
+            return URL(string: IMAGE_DEFAULT)!
+        }
+    }
     
     var body: some View {
         VStack(alignment:.leading, spacing: 10) {
-            URLImage((URL(string: imageURL )!), placeholder: { _ in
+            URLImage(image(), placeholder: { _ in
                 Indicator()
                     .frame(width: 50, height: 50)
             }) { proxy in
@@ -25,8 +33,8 @@ struct PictureGameItem: View {
                     .frame(width: 300, height: 170)
                     .clipped()
                     .cornerRadius(10)
-                   
-            
+                
+                
             }
         }
     }

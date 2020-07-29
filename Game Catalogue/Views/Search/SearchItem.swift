@@ -12,11 +12,19 @@ struct SearchItem: View {
     
     let item: Game
     
+    func imageURL() -> URL {
+        if let url  = item.background_image {
+            return URL(string: url) ?? URL(string: IMAGE_DEFAULT)!
+        } else {
+            return URL(string: IMAGE_DEFAULT)!
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 
-                URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
+                URLImage(imageURL(), placeholder: { _ in
                     ZStack {
                         Indicator()
                     }.frame(width: 100, height: 90)

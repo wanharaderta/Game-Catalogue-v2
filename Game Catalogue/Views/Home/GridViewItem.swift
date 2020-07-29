@@ -14,11 +14,18 @@ struct GridViewItem: View {
     let item: Game
     @Binding var columns: [GridItem]
     
+    func imageURL() -> URL {
+        if let url  = item.background_image {
+            return URL(string: url) ?? URL(string: IMAGE_DEFAULT)!
+        } else {
+            return URL(string: IMAGE_DEFAULT)!
+        }
+    }
     
     var body: some View {
         VStack {
             if self.columns.count == 2 {
-                URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
+                URLImage(imageURL(), placeholder: { _ in
                     Indicator()
                         .frame(width: 50, height: 50)
                 }) { proxy in
@@ -33,7 +40,7 @@ struct GridViewItem: View {
                     .font(.headline)
                     .lineLimit(1)
             } else {
-                URLImage((URL(string: item.background_image ?? IMAGE_DEFAULT)!), placeholder: { _ in
+                URLImage(imageURL(), placeholder: { _ in
                     Indicator()
                         .frame(width: 50, height: 50)
                 }) { proxy in

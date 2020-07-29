@@ -211,6 +211,7 @@ struct DetailView: View {
                         }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     }.padding(.horizontal, 25)
                     .padding(.top,20)
+                    .padding(.bottom, 100)
                 }
             }
             Spacer()

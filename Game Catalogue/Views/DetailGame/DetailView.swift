@@ -13,6 +13,7 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var viewModel = DetailViewModel()
+    @State private var readMore = false
     
     let id : Int
     
@@ -154,10 +155,25 @@ struct DetailView: View {
                                 Text("Description").font(.headline)
                                 Spacer()
                             }
-                            Text(self.viewModel.gameDetail.description_raw)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.gray)
-                                .padding(.top,10)
+                            if(readMore){
+                                Text(self.viewModel.gameDetail.description_raw)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.gray)
+                                    .padding(.top,10)
+                            } else {
+                                Text(self.viewModel.gameDetail.description_raw)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.leading)
+                                    .padding(.top,10)
+                                    .lineLimit(5)
+                            }
+                            Button(action: {self.readMore.toggle()}, label: {
+                                if self.readMore{
+                                    Text("")
+                                } else {
+                                    Text("Read more")
+                                }
+                            })
                         }
                     }.padding(.horizontal, 25)
                     .padding(.top,20)

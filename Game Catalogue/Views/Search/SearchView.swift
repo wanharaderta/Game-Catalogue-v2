@@ -24,7 +24,7 @@ struct SearchView: View {
                         Image(systemName: "xmark.circle.fill")
                             .imageScale(.medium)
                             .foregroundColor(Color(.systemGray3))
-                            .padding(1)
+                            .padding(2)
                             .onTapGesture {
                                 withAnimation {
                                     self.viewModel.searchTemp = ""

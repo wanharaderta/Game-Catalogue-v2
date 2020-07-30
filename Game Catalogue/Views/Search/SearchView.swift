@@ -17,7 +17,7 @@ struct SearchView: View {
             
             List {
                 HStack{
-                    TextField("Search", text: self.$viewModel.searchTemp, onEditingChanged: {_ in } ){
+                    TextField("Keywords", text: self.$viewModel.searchTemp, onEditingChanged: {_ in } ){
                         self.viewModel.search()
                     }
                     if self.viewModel.searchTemp != "" {

@@ -16,10 +16,25 @@ struct SearchView: View {
         NavigationView {
             
             List {
-                TextField("Search", text: self.$viewModel.searchTemp, onEditingChanged: {_ in } ){
-                    self.viewModel.search()
-                }.textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.bottom, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                HStack{
+                    TextField("Search", text: self.$viewModel.searchTemp, onEditingChanged: {_ in } ){
+                        self.viewModel.search()
+                    }
+                    if self.viewModel.searchTemp != "" {
+                        Image(systemName: "xmark.circle.fill")
+                            .imageScale(.medium)
+                            .foregroundColor(Color(.systemGray3))
+                            .padding(1)
+                            .onTapGesture {
+                                withAnimation {
+                                    self.viewModel.searchTemp = ""
+                                }
+                            }
+                    }
+                }.padding(15)
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
+                .padding(.vertical, 10)
                 
                 if (self.viewModel.gameList.count == 0){
                     VStack(alignment: .center) {

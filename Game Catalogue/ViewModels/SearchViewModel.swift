@@ -14,7 +14,7 @@ class SearchViewModel: ObservableObject {
     @Published var gameList : [Game] = [Game]()
     @Published var emptyList = false
     
-    var searchTemp: String = ""
+    @Published var searchTemp: String = ""
     
     init() {
         self.service = WebService()

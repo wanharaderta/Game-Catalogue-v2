@@ -1,4 +1,4 @@
 # Game-Catalogue-v2
 Game Catalogue V2
 
-![](https://media.giphy.com/media/KEN8siYiV2vGLXMUBK/giphy.gif)
+![](https://media.giphy.com/media/dYgcnj94xjxsNl2RvE/giphy.gif)
